@@ -1,7 +1,10 @@
 import React from 'react';
 import { MainLayout } from '../templates';
+import { HeroSection } from '../organisms';
 import { FeaturesGrid } from '../organisms';
-import { Text, Button } from '../atoms';
+import { Section, AboutCard } from '../molecules';
+import { BackgroundPattern } from '../atoms';
+import { Text } from '../atoms';
 
 const HomePage: React.FC = () => {
   const navbarLinks = [
@@ -51,55 +54,54 @@ const HomePage: React.FC = () => {
 
   return (
     <MainLayout navbarLinks={navbarLinks} footerLinks={footerLinks}>
+      {/* Animated Background Pattern */}
+      <BackgroundPattern variant="hero" />
+
       {/* Hero Section */}
-      <section className="text-center py-16" id="home">
-        <Text variant="h1" className="mb-4">
-          Welcome to Creativa Soft-IA
-        </Text>
-        <Text variant="h4" className="mb-8 text-gray-600">
-          Designing and developing intelligent digital solutions that help organizations innovate and scale
-        </Text>
-        <div className="flex justify-center space-x-4">
-          <Button variant="primary" size="lg">
-            Get Started
-          </Button>
-          <Button variant="outline" size="lg">
-            Learn More
-          </Button>
-        </div>
-      </section>
+      <HeroSection
+        title="CREATIVA SOFT-IA"
+        subtitle="Designing and developing intelligent digital solutions"
+        description="that help organizations innovate and scale"
+        primaryButtonText="Get Started"
+        secondaryButtonText="Learn More"
+        onPrimaryClick={() => console.log('Primary button clicked')}
+        onSecondaryClick={() => console.log('Secondary button clicked')}
+      />
 
       {/* Features Section */}
-      <section className="py-16" id="features">
-        <div className="text-center mb-12">
-          <Text variant="h2" className="mb-4">
-            Our Features
-          </Text>
-          <Text variant="p" className="max-w-2xl mx-auto">
-            Discover how our technology solutions can transform your business
-          </Text>
-        </div>
+      <Section
+        title="Our Features"
+        subtitle="Discover how our technology solutions can transform your business"
+        id="features"
+      >
         <FeaturesGrid features={features} onFeatureClick={handleFeatureClick} />
-      </section>
+      </Section>
 
       {/* About Section */}
-      <section className="py-16 bg-gray-50 -mx-4 px-4" id="about">
-        <div className="max-w-3xl mx-auto text-center">
-          <Text variant="h2" className="mb-4">
-            About Us
-          </Text>
-          <Text variant="p" className="mb-4">
-            Creativa Soft-IA is a technology company focused on designing and developing intelligent digital solutions. 
-            We combine cutting-edge AI technology with modern development practices to create solutions that help 
-            organizations innovate and scale effectively.
-          </Text>
-          <Text variant="p">
-            Our team of experts is dedicated to delivering high-quality, user-centric applications using the latest 
-            technologies including React.js, TypeScript, and Tailwind CSS, following Atomic Design principles for 
-            maintainable and scalable code.
-          </Text>
+      <Section
+        title="About Us"
+        id="about"
+        showDivider={true}
+      >
+        <div className="max-w-4xl mx-auto">
+          <AboutCard>
+            <div className="animate-slide-up">
+              <Text variant="p" color="gray" className="text-lg leading-relaxed mb-6">
+                Creativa Soft-IA is a technology company focused on designing and developing intelligent digital solutions. 
+                We combine cutting-edge AI technology with modern development practices to create solutions that help 
+                organizations innovate and scale effectively.
+              </Text>
+            </div>
+            <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <Text variant="p" color="gray" className="text-lg leading-relaxed">
+                Our team of experts is dedicated to delivering high-quality, user-centric applications using the latest 
+                technologies including React.js, TypeScript, and Tailwind CSS, following Atomic Design principles for 
+                maintainable and scalable code.
+              </Text>
+            </div>
+          </AboutCard>
         </div>
-      </section>
+      </Section>
     </MainLayout>
   );
 };

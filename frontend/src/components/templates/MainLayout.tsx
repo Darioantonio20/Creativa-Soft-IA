@@ -19,7 +19,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar title={navbarTitle} links={navbarLinks} />
-      <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer companyName={companyName} links={footerLinks} />
     </div>
   );
