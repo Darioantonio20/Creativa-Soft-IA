@@ -45,7 +45,8 @@ const HomePage: React.FC = () => {
   ];
 
   const handleFeatureClick = (index: number) => {
-    console.log(`Feature ${index} clicked`);
+    // TODO: Implement feature detail navigation or modal
+    // For now, this is a placeholder for future feature interaction
   };
 
   return (
