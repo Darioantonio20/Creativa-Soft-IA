@@ -26,14 +26,14 @@ const Text: React.FC<TextProps> = ({
 
   const colorClasses = {
     default: {
-      h1: 'text-gray-900',
-      h2: 'text-gray-800',
-      h3: 'text-gray-800',
-      h4: 'text-gray-700',
+      h1: 'text-gray-500',
+      h2: 'text-gray-600',
+      h3: 'text-gray-600',
+      h4: 'text-gray-400',
       h5: 'text-gray-700',
-      h6: 'text-gray-600',
-      p: 'text-gray-600',
-      span: 'text-gray-600',
+      h6: 'text-gray-300',
+      p: 'text-gray-400',
+      span: 'text-gray-300',
     },
     brand: {
       h1: 'text-brand-600',

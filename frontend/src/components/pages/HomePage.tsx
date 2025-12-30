@@ -1,51 +1,25 @@
 import React from 'react';
 import { MainLayout } from '../templates';
-import { HeroSection } from '../organisms';
-import { FeaturesGrid } from '../organisms';
+import { HeroSection, FeaturesGrid } from '../organisms';
+import { LeadForm } from '../organisms/LeadForm';
 import { Section, AboutCard } from '../molecules';
-import { BackgroundPattern } from '../atoms';
-import { Text } from '../atoms';
+import { BackgroundPattern, Text } from '../atoms';
+import information from '../data/information.json';
+
+type NavLink = {
+  label: string;
+  href: string;
+};
 
 const HomePage: React.FC = () => {
-  const navbarLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Features', href: '#features' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+  const navbarLinks: NavLink[] = [
+    { label: 'Inicio', href: '#home' },
+    { label: 'Características', href: '#features' },
+    { label: 'Sobre Nosotros', href: '#about' },
+    { label: 'Contacto', href: '#contact' },
   ];
 
-  const footerLinks = [
-    { label: 'Privacy Policy', href: '#privacy' },
-    { label: 'Terms of Service', href: '#terms' },
-    { label: 'Contact Us', href: '#contact' },
-  ];
-
-  const features = [
-    {
-      title: 'AI-Powered Solutions',
-      description: 'Leverage cutting-edge artificial intelligence to transform your business processes and decision-making.',
-    },
-    {
-      title: 'Scalable Architecture',
-      description: 'Build applications that grow with your business using modern, cloud-native technologies.',
-    },
-    {
-      title: 'User-Centric Design',
-      description: 'Create exceptional user experiences with our design-first approach and best practices.',
-    },
-    {
-      title: 'Real-time Analytics',
-      description: 'Make data-driven decisions with comprehensive analytics and reporting tools.',
-    },
-    {
-      title: 'Secure & Reliable',
-      description: 'Enterprise-grade security and reliability to protect your data and ensure uptime.',
-    },
-    {
-      title: '24/7 Support',
-      description: 'Dedicated support team available around the clock to assist with your needs.',
-    },
-  ];
+  const { features: featureData, about, footer } = information;
 
   const handleFeatureClick = (index: number) => {
     // TODO: Implement feature detail navigation or modal
@@ -53,53 +27,69 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <MainLayout navbarLinks={navbarLinks} footerLinks={footerLinks}>
+    <MainLayout navbarLinks={navbarLinks} footerLinks={footer.quickLinks}>
       {/* Animated Background Pattern */}
       <BackgroundPattern variant="hero" />
 
       {/* Hero Section */}
       <HeroSection
-        title="CREATIVA SOFT-IA"
-        subtitle="Designing and developing intelligent digital solutions"
-        description="that help organizations innovate and scale"
-        primaryButtonText="Get Started"
-        secondaryButtonText="Learn More"
         onPrimaryClick={() => console.log('Primary button clicked')}
         onSecondaryClick={() => console.log('Secondary button clicked')}
       />
 
       {/* Features Section */}
       <Section
-        title="Our Features"
-        subtitle="Discover how our technology solutions can transform your business"
+        title={featureData.title}
+        subtitle={featureData.subtitle}
         id="features"
       >
-        <FeaturesGrid features={features} onFeatureClick={handleFeatureClick} />
+        <FeaturesGrid features={featureData.items} onFeatureClick={handleFeatureClick} />
       </Section>
 
       {/* About Section */}
       <Section
-        title="About Us"
+        title={about.title}
         id="about"
         showDivider={true}
       >
         <div className="max-w-4xl mx-auto">
           <AboutCard>
-            <div className="animate-slide-up">
-              <Text variant="p" color="gray" className="text-lg leading-relaxed mb-6">
-                Creativa Soft-IA is a technology company focused on designing and developing intelligent digital solutions. 
-                We combine cutting-edge AI technology with modern development practices to create solutions that help 
-                organizations innovate and scale effectively.
-              </Text>
-            </div>
-            <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <Text variant="p" color="gray" className="text-lg leading-relaxed">
-                Our team of experts is dedicated to delivering high-quality, user-centric applications using the latest 
-                technologies including React.js, TypeScript, and Tailwind CSS, following Atomic Design principles for 
-                maintainable and scalable code.
-              </Text>
-            </div>
+            {about.content.map((paragraph: string, index: number) => (
+              <div 
+                key={index} 
+                className={`animate-slide-up${index > 0 ? ' mt-6' : ''}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <Text variant="p" color="gray" className="text-lg leading-relaxed">
+                  {paragraph}
+                </Text>
+              </div>
+            ))}
           </AboutCard>
+        </div>
+      </Section>
+
+      {/* Contact Form Section */}
+      <Section id="contact" className="py-16 md:py-24 bg-navy-900/50 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <Text variant="h2" className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Contáctanos
+            </Text>
+            <Text variant="p" className="text-lg text-gray-300 max-w-2xl mx-auto">
+              ¿Listo para llevar tu negocio al siguiente nivel? Déjanos tus datos y nos pondremos en contacto contigo.
+            </Text>
+          </div>
+          
+          <LeadForm />
+        </div>
+        
+        {/* Background Pattern */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-900/80 to-navy-950/90"></div>
+          <div className="absolute inset-0 opacity-10">
+            <BackgroundPattern />
+          </div>
         </div>
       </Section>
     </MainLayout>

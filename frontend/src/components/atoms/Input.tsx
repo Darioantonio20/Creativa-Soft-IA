@@ -1,15 +1,10 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  type?: 'text' | 'email' | 'password' | 'number' | 'tel';
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
-  disabled?: boolean;
-  required?: boolean;
-  name?: string;
+  className?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -22,16 +17,23 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
   required = false,
   name,
+  id,
+  className = '',
+  ...props
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full space-y-1">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label 
+          htmlFor={id} 
+          className="block text-sm font-medium text-gray-300 mb-1"
+        >
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
       )}
       <input
+        id={id}
         type={type}
         name={name}
         placeholder={placeholder}
@@ -39,13 +41,22 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         disabled={disabled}
         required={required}
-        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
-          error
-            ? 'border-red-500 focus:ring-red-500'
-            : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-        } ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}`}
+        className={twMerge(
+          'w-full px-4 py-3 bg-navy-800/70 border border-gray-700 rounded-lg',
+          'focus:ring-2 focus:ring-brand-500 focus:border-transparent text-white',
+          'placeholder-gray-400 transition-all duration-150',
+          'hover:border-gray-600 focus:outline-none',
+          disabled && 'opacity-50 cursor-not-allowed',
+          error ? 'border-red-500' : 'border-gray-700',
+          className
+        )}
+        {...props}
       />
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && (
+        <p className="text-sm text-red-400 transition-all duration-150">
+          {error}
+        </p>
+      )}
     </div>
   );
 };

@@ -1,0 +1,85 @@
+{
+  "company": {
+    "name": "CREATIVA SOFT-IA",
+    "shortName": "SOFT-IA",
+    "description": "Diseñando y desarrollando soluciones digitales inteligentes que ayudan a las organizaciones a innovar y escalar",
+    "logoPath": "/img/LogoCreativaSoftIA.png"
+  },
+  "hero": {
+    "title": "CREATIVA SOFT-IA",
+    "subtitle": "Diseñando y desarrollando soluciones digitales inteligentes",
+    "description": "que ayudan a las organizaciones a innovar y escalar",
+    "primaryButton": "Comenzar",
+    "secondaryButton": "Más información"
+  },
+  "features": {
+    "title": "Nuestras Características",
+    "subtitle": "Descubre cómo nuestras soluciones tecnológicas pueden transformar tu negocio",
+    "items": [
+      {
+        "title": "Soluciones con IA",
+        "description": "Aprovecha la inteligencia artificial de vanguardia para transformar tus procesos empresariales y la toma de decisiones."
+      },
+      {
+        "title": "Arquitectura Escalable",
+        "description": "Construye aplicaciones que crecen con tu negocio utilizando tecnologías modernas y nativas de la nube."
+      },
+      {
+        "title": "Diseño Centrado en el Usuario",
+        "description": "Crea experiencias de usuario excepcionales con nuestro enfoque de diseño y mejores prácticas."
+      },
+      {
+        "title": "Análisis en Tiempo Real",
+        "description": "Toma decisiones basadas en datos con herramientas integrales de análisis e informes."
+      },
+      {
+        "title": "Seguro y Confiable",
+        "description": "Seguridad de nivel empresarial y confiabilidad para proteger tus datos y garantizar el tiempo de actividad."
+      },
+      {
+        "title": "Soporte 24/7",
+        "description": "Equipo de soporte dedicado disponible en todo momento para asistirte con tus necesidades."
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "content": [
+      "Creativa Soft-IA es una empresa de tecnología enfocada en diseñar y desarrollar soluciones digitales inteligentes. Combinamos tecnología de IA de vanguardia con prácticas modernas de desarrollo para crear soluciones que ayuden a las organizaciones a innovar y escalar de manera efectiva.",
+      "Nuestro equipo de expertos se dedica a ofrecer aplicaciones de alta calidad centradas en el usuario, utilizando las últimas tecnologías como React.js, TypeScript y Tailwind CSS, siguiendo los principios de Atomic Design para un código mantenible y escalable."
+    ]
+  },
+  "footer": {
+    "companyDescription": "Diseñando y desarrollando soluciones digitales inteligentes que ayudan a las organizaciones a innovar y escalar.",
+    "quickLinksTitle": "Enlaces Rápidos",
+    "connectTitle": "Conéctate con Nosotros",
+    "quickLinks": [
+      { "label": "Política de Privacidad", "href": "#privacy" },
+      { "label": "Términos de Servicio", "href": "#terms" },
+      { "label": "Contáctanos", "href": "#contact" }
+    ],
+    "copyright": "© {year} Creativa Soft-IA",
+    "teamName": "Equipo de Creativa Soft-IA"
+  },
+  "contactForm": {
+    "title": "Contáctanos",
+    "description": "¿Listo para llevar tu negocio al siguiente nivel? Déjanos tus datos y nos pondremos en contacto contigo.",
+    "fields": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "company": "Empresa",
+      "message": "¿En qué podemos ayudarte?"
+    },
+    "requiredField": "*",
+    "submitButton": "Enviar mensaje",
+    "submittingButton": "Enviando...",
+    "privacyText": "Al enviar este formulario, aceptas nuestra política de privacidad y términos de servicio.",
+    "success": {
+      "title": "¡Gracias por contactarnos!",
+      "message": "Hemos recibido tu información y nos pondremos en contacto contigo pronto.",
+      "description": "Uno de nuestros representantes se pondrá en contacto contigo en las próximas 24 horas.",
+      "button": "Enviar otro mensaje"
+    }
+  }
+}

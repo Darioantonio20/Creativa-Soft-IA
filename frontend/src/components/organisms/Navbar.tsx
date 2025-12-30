@@ -29,11 +29,13 @@ const Navbar: React.FC<NavbarProps> = ({ logo, title, links = [] }) => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-lg flex items-center justify-center shadow-lg animate-glow">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                <path fill="white" d="M9 12l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <div className="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-lg flex items-center justify-center shadow-lg animate-glow overflow-hidden">
+              <img 
+                src="/img/LogoCreativaSoftIA.png" 
+                alt="Creativa Soft-IA Logo" 
+                className="w-8 h-8 object-contain"
+                loading="lazy"
+              />
             </div>
             <div className="animate-slide-in-left">
               <Text variant="h4" className="text-white font-bold text-xl">
