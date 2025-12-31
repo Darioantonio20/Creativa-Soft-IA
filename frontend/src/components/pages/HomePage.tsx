@@ -17,6 +17,8 @@ const HomePage: React.FC = () => {
     { label: 'Características', href: '#features' },
     { label: 'Sobre Nosotros', href: '#about' },
     { label: 'Contacto', href: '#contact' },
+    { label: 'Oportunidades', href: '/oportunidades' },
+    { label: 'Blog', href: '/blog' },
   ];
 
   const { features: featureData, about, footer } = information;
