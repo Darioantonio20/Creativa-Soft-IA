@@ -39,7 +39,10 @@ const FormField: React.FC<FormFieldProps> = ({
         name={name}
       />
       {buttonText && onButtonClick && (
-        <Button onClick={onButtonClick} variant="primary" size="md">
+        <Button
+          onClick={onButtonClick}
+          className="bg-gradient-to-r from-brand-500 to-brand-600 shadow-brand-500/25 hover:-translate-y-1"
+        >
           {buttonText}
         </Button>
       )}

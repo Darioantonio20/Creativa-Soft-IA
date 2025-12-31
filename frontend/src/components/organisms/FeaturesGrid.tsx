@@ -54,9 +54,7 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({ features, onFeatureClick })
             {onFeatureClick && (
               <Button 
                 onClick={() => onFeatureClick(index)} 
-                variant="outline" 
-                size="sm"
-                className="border-brand-500 text-brand-400 hover:bg-brand-500 hover:text-white transition-all duration-300"
+                className="border-brand-500 text-brand-400 hover:bg-brand-500 hover:text-white transition-all duration-300 px-6 py-2"
               >
                 Learn More
               </Button>

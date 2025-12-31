@@ -161,6 +161,57 @@
       "sendLabel": "Publicar"
     }
   },
+  "techStack": {
+    "title": "Tecnologías y habilidades del equipo",
+    "subtitle": "Nuestro stack combina herramientas modernas con prácticas ágiles para lanzar productos con rapidez y calidad.",
+    "categories": [
+      {
+        "title": "UI / UX",
+        "items": [
+          { "label": "Figma", "iconKey": "figma" },
+          { "label": "Material Design", "iconKey": "materialdesign" },
+          { "label": "Canva", "iconKey": "canva" },
+          { "label": "AI Art", "iconKey": "openai" }
+        ]
+      },
+      {
+        "title": "Frontend",
+        "items": [
+          { "label": "React", "iconKey": "react" },
+          { "label": "Next.js", "iconKey": "nextjs" },
+          { "label": "Vue.js", "iconKey": "vue" },
+          { "label": "Tailwind CSS", "iconKey": "tailwind" },
+          { "label": "TypeScript", "iconKey": "typescript" },
+          { "label": "JavaScript", "iconKey": "javascript" },
+          { "label": "HTML5", "iconKey": "html5" },
+          { "label": "CSS3", "iconKey": "css3" },
+          { "label": "Flutter", "iconKey": "flutter" },
+          { "label": "Dart", "iconKey": "dart" }
+        ]
+      },
+      {
+        "title": "Backend / DevOps",
+        "items": [
+          { "label": "Node.js", "iconKey": "node" },
+          { "label": "Express.js", "iconKey": "express" },
+          { "label": "Python", "iconKey": "python" },
+          { "label": "MongoDB", "iconKey": "mongodb" },
+          { "label": "CI / CD", "iconKey": "githubactions" },
+          { "label": "Netlify", "iconKey": "netlify" },
+          { "label": "SQL", "iconKey": "sql" },
+          { "label": "Azure DevOps", "iconKey": "azuredevops" },
+          { "label": "Java", "iconKey": "java" }
+        ]
+      }
+    ],
+    "softSkills": [
+      "Agile Methodology",
+      "Scrum",
+      "Team Communication",
+      "Collaboration",
+      "Problem Solving"
+    ]
+  },
   "footer": {
     "companyDescription": "Diseñando y desarrollando soluciones digitales inteligentes que ayudan a las organizaciones a innovar y escalar.",
     "quickLinksTitle": "Enlaces Rápidos",

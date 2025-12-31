@@ -1,6 +1,6 @@
 import React from 'react';
 import { MainLayout } from '../templates';
-import { HeroSection, FeaturesGrid } from '../organisms';
+import { HeroSection, FeaturesGrid, TechStack } from '../organisms';
 import { LeadForm } from '../organisms/LeadForm';
 import { Section, AboutCard } from '../molecules';
 import { BackgroundPattern, Text } from '../atoms';
@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
     { label: 'Blog', href: '/blog' },
   ];
 
-  const { features: featureData, about, footer } = information;
+  const { features: featureData, about, footer, techStack } = information;
 
   const handleFeatureClick = (index: number) => {
     // TODO: Implement feature detail navigation or modal
@@ -34,10 +34,7 @@ const HomePage: React.FC = () => {
       <BackgroundPattern variant="hero" />
 
       {/* Hero Section */}
-      <HeroSection
-        onPrimaryClick={() => console.log('Primary button clicked')}
-        onSecondaryClick={() => console.log('Secondary button clicked')}
-      />
+      <HeroSection />
 
       {/* Features Section */}
       <Section
@@ -71,6 +68,15 @@ const HomePage: React.FC = () => {
         </div>
       </Section>
 
+      {/* Tech Stack */}
+      <Section
+        title={techStack.title}
+        subtitle={techStack.subtitle}
+        id="stack"
+      >
+        <TechStack categories={techStack.categories} softSkills={techStack.softSkills} />
+      </Section>
+
       {/* Contact Form Section */}
       <Section id="contact" className="py-16 md:py-24 bg-navy-900/50 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -82,7 +88,6 @@ const HomePage: React.FC = () => {
               ¿Listo para llevar tu negocio al siguiente nivel? Déjanos tus datos y nos pondremos en contacto contigo.
             </Text>
           </div>
-          
           <LeadForm />
         </div>
         

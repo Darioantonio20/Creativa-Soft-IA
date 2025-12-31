@@ -14,6 +14,8 @@ interface FormData {
   company: string;
   message: string;
 }
+// TODO: Add LEADS_ENDPOINT to .env
+const LEADS_ENDPOINT = process.env.REACT_APP_LEADS_ENDPOINT || '';
 
 const LeadForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -26,6 +28,7 @@ const LeadForm: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,15 +41,32 @@ const LeadForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
     try {
-      // Here you would typically send the form data to your backend
-      console.log('Form submitted:', formData);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch(LEADS_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
       setIsSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setSubmitError('No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.');
     } finally {
       setIsSubmitting(false);
     }
@@ -70,7 +90,7 @@ const LeadForm: React.FC = () => {
           </Text>
           <Button 
             onClick={() => setIsSubmitted(false)}
-            variant="primary"
+
             className="w-full sm:w-auto"
           >
             {contactForm.success.button}
@@ -163,12 +183,17 @@ const LeadForm: React.FC = () => {
         <div className="pt-2">
           <Button 
             type="submit" 
-            variant="primary"
+
             disabled={isSubmitting}
             className="w-full"
           >
             {isSubmitting ? contactForm.submittingButton : contactForm.submitButton}
           </Button>
+          {submitError && (
+            <p className="text-sm text-red-400 mt-3 text-center">
+              {submitError}
+            </p>
+          )}
         </div>
 
         <p className="text-xs text-gray-400 text-center mt-6 pt-4 border-t border-gray-800">

@@ -3,8 +3,6 @@ import React from 'react';
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
@@ -13,36 +11,32 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
-  variant = 'primary',
-  size = 'md',
   disabled = false,
   type = 'button',
   className = '',
 }) => {
-  const baseClasses = 'font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
-  const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
-    outline: 'bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500',
-  };
-  
-  const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
-  };
-  
-  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
-  
+  const baseClasses =
+    'relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden';
+
+  const disabledClasses = disabled
+    ? 'opacity-50 cursor-not-allowed pointer-events-none'
+    : 'hover:-translate-y-0.5';
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
+      className={`${baseClasses} ${disabledClasses} ${className}`}
     >
-      {children}
+      <span className="relative z-20">{children}</span>
+
+      <span className="absolute left-[-75%] top-0 h-full w-1/2 bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out" />
+
+      <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0" />
+      <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0" />
+      <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0" />
+      <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0" />
     </button>
   );
 };
